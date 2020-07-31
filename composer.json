@@ -1,0 +1,25 @@
+{
+  "name": "surplex/api-mock-api",
+  "license": "Apache-2.0",
+  "description": "Interface for the communication between software and api-mock",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Daniel Schischkin",
+      "email": "daniel.schischkin@surplex.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "guzzlehttp/guzzle": "^6.3",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "ApiMock\\": "src/"
+    }
+  }
+}

@@ -112,7 +112,7 @@ class ApiMock
      */
     public function count(): int
     {
-        return (int)(string)$this->getClient()->get('/?session_id=' . $this->getSessionID())->getBody();
+        return (int)(string)$this->getClient()->get('/api-mock/count?session_id=' . $this->getSessionID())->getBody();
     }
 
     /**
@@ -120,7 +120,7 @@ class ApiMock
      */
     public function clear()
     {
-        $this->getClient()->get('/clear-session?session_id=' . $this->getSessionID());
+        $this->getClient()->get('/api-mock/clear-session?session_id=' . $this->getSessionID());
     }
 
     /**
@@ -172,7 +172,7 @@ class ApiMock
         if (is_null($sessionId)) {
             $sessionId = $this->getSessionID();
         }
-        $response = $this->getClient()->get('/client-request?session_id=' . $sessionId . '&request_key=' . $requestKey);
+        $response = $this->getClient()->get('/api-mock/client-request?session_id=' . $sessionId . '&request_key=' . $requestKey);
         if (!empty($response)) {
             return json_decode($response->getBody()->getContents(), true);
         } else {

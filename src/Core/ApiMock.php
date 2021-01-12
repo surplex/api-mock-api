@@ -91,7 +91,7 @@ class ApiMock
     public function addResponse(ResponseInterface $response, int $order = 0, string $requestKey = null): bool
     {
         $res = $this->getClient()->post(
-            '/' . ((strlen($this->getSessionID()) >= 1) ? '?session_id=' . $this->getSessionID() : ''),
+            '/api-mock/create' . ((strlen($this->getSessionID()) >= 1) ? '?session_id=' . $this->getSessionID() : ''),
             [
                 RequestOptions::JSON => [
                     'status_code' => $response->getStatusCode(),

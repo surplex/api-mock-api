@@ -1,6 +1,6 @@
 {
   "name": "surplex/api-mock-api",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "license": "Apache-2.0",
   "description": "Interface for the communication between software and api-mock",
   "type": "library",

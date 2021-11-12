@@ -4,6 +4,32 @@
 API for "the software to mock third-party responses" to include in your application's API tests.
 &nbsp;
 &nbsp;
+
+## Use Proxy / Automatic Mode
+To automatically forward requests to the API mock there is the possibility to use a `HandlerStack` for `Guzzle`.
+The `HandlerStack` checks if a request has already been saved and if not,
+the request will be sent to the correct host and then the response will be cached,
+so that the next time a request will be sent to the API mock, and the cached response will be returned.
+
+```php
+<?php
+//...
+$apiMockClient = new \GuzzleHttp\Client([/*...*/]);
+$apiMock = new \ApiMock\Core\ApiMock($apiMockClient);
+$proxyStack = new \ApiMock\Proxy\ProxyStack($apiMock);
+
+$myDefaultClient = new \GuzzleHttp\Client([
+    /*...*/
+    'handler' => $proxyStack,
+]);
+
+// Will be sent against example.org
+$myDefaultClient->get('https://example.org', []);
+// Will be sent against API Mock
+$myDefaultClient->get('https://example.org', []);
+```
+
+
 ## <a id="Troubleshooting" href="#Troubleshooting">Troubleshooting</a>
 ---  
 #### I used a requestKey, but the `ApiMock::getClientRequest()` gets a 404/null

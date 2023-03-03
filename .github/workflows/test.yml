@@ -15,7 +15,7 @@ jobs:
     - name: Setup PHP with tools
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '7.4'
+        php-version: '8.1'
     - uses: actions/checkout@v2
     - name: Validate composer.json and composer.lock
       run: composer validate
@@ -31,4 +31,4 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --no-progress --no-suggest
     - name: Run unit tests
-      run: vendor/bin/codecept run unit
+      run: bin/codecept run unit
